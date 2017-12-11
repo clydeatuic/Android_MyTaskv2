@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -26,6 +27,8 @@ public class ListDataActivity extends AppCompatActivity {
     DatabaseHelper mDatabaseHelper;
     private ListView mListView;
 
+    Button btnAddTask;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,16 @@ public class ListDataActivity extends AppCompatActivity {
 
         mListView = (ListView) findViewById(R.id.listView);
         mDatabaseHelper = new DatabaseHelper(this);
+        btnAddTask = (Button) findViewById(R.id.btnAddTask);
+
+        btnAddTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainScreenIntent = new Intent(ListDataActivity.this, Main.class);
+                startActivity(mainScreenIntent);
+            }
+        });
+
         populateListView();
     }
 
